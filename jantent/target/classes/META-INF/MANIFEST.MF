@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: jantent
+Implementation-Version: 1.1
+Built-By: admin
+Implementation-Vendor-Id: jantent
+Build-Jdk: 1.8.0_191
+Implementation-URL: http://projects.spring.io/spring-boot/jantent/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
