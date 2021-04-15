@@ -45,7 +45,12 @@ public class ScheduleTask {
         }
         mailService.sendSimpleEmail(mailTo,"博客系统运行情况",result.toString());
     }
-
+    
+    @Scheduled(cron="0 10 16 * * ? ")
+    public void selfProcess() {
+    	mailService.sendSimpleEmail(mailTo, "每日8点16点提示消息", "做个测试  嘎嘎");
+    }
+    
     public static String getMemery() {
 
         OperatingSystemMXBean osmxb = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
