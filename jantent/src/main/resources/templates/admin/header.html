@@ -46,7 +46,7 @@
                 <ul class="nav navbar-nav navbar-right pull-right">
                     <li class="dropdown">
                         <a th:href="@{index.html}" class="dropdown-toggle profile" data-toggle="dropdown"
-                           aria-expanded="true"><img th:src="${commons.gravatar(session.login_user.email)}" alt="user-img"
+                           aria-expanded="true"><img th:src="@{/admin/images/favicon.png}" alt="user-img"
                                                      class="img-circle"/> </a>
                         <ul class="dropdown-menu">
                             <li><a th:href="@{${commons.site_url()}}" target="_blank"><i class="fa fa-eye"
@@ -107,6 +107,11 @@
                     <a th:href="@{/admin/setting}"
                        th:class="${active}=='setting'?'waves-effect active':'waves-effect'"><i
                             class="fa fa-gear" aria-hidden="true"></i><span> 系统设置 </span></a>
+                </li>
+                <li th:class="${active}=='boh'?'active':''">
+                    <a th:href="@{/admin/boh}"
+                       th:class="${active}=='boh'?'waves-effect active':'waves-effect'"><i
+                            class="fa fa-gear" aria-hidden="true"></i><span> 普通界面 </span></a>
                 </li>
             </ul>
             <div class="clearfix"></div>

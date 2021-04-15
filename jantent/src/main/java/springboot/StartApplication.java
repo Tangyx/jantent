@@ -34,7 +34,7 @@ import javax.sql.DataSource;
 
 @SpringBootApplication
 @EnableScheduling
-@MapperScan("springboot.dao")
+//@MapperScan("springboot.dao")
 public class StartApplication {
 
     @Resource
@@ -46,16 +46,16 @@ public class StartApplication {
     public static void main(String[] args) throws Exception{
 
         SpringApplication app = new SpringApplication(StartApplication.class);
-        app.setBannerMode(Banner.Mode.OFF);
+        //app.setBannerMode(Banner.Mode.OFF);
         app.setBannerMode(Banner.Mode.OFF);
         app.run(args);
 
     }
 
 
-    // datasource注入
+    /*// datasource注入
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
+    @ConfigurationProperties(prefix = "spring.datasource.first")
     public DataSource dataSource() {
         return new DruidDataSource();
     }
@@ -66,7 +66,7 @@ public class StartApplication {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath*:/mapper/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath*:/mapper/first/*.xml"));
         return sqlSessionFactoryBean.getObject();
     }
 
@@ -75,7 +75,7 @@ public class StartApplication {
     @Bean
     public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());
-    }
+    }*/
 
 //    // 配置8080端口自动转向8443
 //    @Bean

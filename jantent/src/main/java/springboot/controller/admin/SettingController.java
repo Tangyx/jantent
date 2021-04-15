@@ -61,6 +61,8 @@ public class SettingController extends AbstractController {
         if (options.get("site_record") == null) {
             options.put("site_record", "");
         }
+        options.put("site_theme", "default");
+        options.put("site_block_ips", "*.*.*.*");
         request.setAttribute("options", options);
         return "admin/setting";
     }
