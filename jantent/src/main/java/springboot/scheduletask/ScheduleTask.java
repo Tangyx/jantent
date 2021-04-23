@@ -39,6 +39,9 @@ public class ScheduleTask {
     
     @Autowired
     private IUcmlService ucml;
+    
+    @Resource
+    private IUcmlService serviceT;
 
     @Value("${spring.mail.username}")
     private String mailTo;
@@ -84,6 +87,7 @@ public class ScheduleTask {
     
     
     public static Hashtable<Object, Object> getUcml(IUcmlService ucmlS){
+    	    	
     	Hashtable<Object, Object> hashtable = new Hashtable<Object, Object>();
     	
     	//1、异常项目经理点击太快 物料状态未更改 查询 （实际上是中间被改了am_tmold表的结构  以及处理逻辑中的关键字段也被做他用——猜测  已经更改了相应的逻辑）
@@ -225,7 +229,7 @@ public class ScheduleTask {
     			"AND b.AssignTaskOID IS NULL\n" + 
     			"AND a.CreateTS > '2020-10-9'\n" + 
     			"and a.FlowID<>'FLow_11515VER10'\n" + 
-    			"ORDER BY a.CreateTS ";
+    			" ";
     	
     	List<Map<String, Object>> selectList4 = ucmlS.selectList(sixSql);
     	if(selectList4.size()>0) {
@@ -249,7 +253,7 @@ public class ScheduleTask {
     			"'AC_12442VER10'\n" + 
     			"and a.FlowID='FLow_11515VER10'\n" + 
     			"and (c.AM_TERRORREPORTOID is not null and c.Priority='0')\n" + 
-    			"ORDER BY a.CreateTS ";
+    			" ";
     	
     	List<Map<String, Object>> selectList5 = ucmlS.selectList(sevenSql);
     	if(selectList5.size() >0) {
@@ -348,7 +352,7 @@ public class ScheduleTask {
     	if(size6 > 0) {
     		String noS = "";
     		for(int i=0;i<size6;i++) {
-    			Object object = selectList9.get(i).get("procmorderno");
+    			Object object = selectList9.get(i).get("ProcmOrderNo");
     			noS += object.toString() + "|";
     		}
     		hashtable.put("另采订单查询物料外键丢失", "错误数据条数:"+size6+";对应订单号："+noS);
